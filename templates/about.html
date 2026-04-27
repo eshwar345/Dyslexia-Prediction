@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyslexia Disease</title>
+    <link rel="stylesheet" href="../static/about.css">
+</head>
+<body>
+    
+    <div >
+        <div class="nav" >
+            <span class="heading">
+                <h2 style="font-size: 38px;">Dyslexia Disease</h2>
+            </span>
+            <span class="pages">
+                <ul style="display: flex; gap: 40px;"> 
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="#" id="loginLink">LogIn</a></li>
+                </ul>
+            </span>
+        </div>
+        <div class="sec">
+            <h1 class="animated-title">The Stages of Dyslexia</h1>
+            <div class="sec1">
+                <div class="c1">
+                    <span class="image-container">
+                        <img src="../static/images/pic8.jpg" alt="Early Development">
+                        <h5>1. Early Development (Ages 3-8)</h5>
+                        <button onclick="toggleContent(this)">Click</button>
+                    </span>
+                    <p class="content">Signs: Delayed speech, difficulty with phonemic awareness (rhyming, recognizing sounds), and trouble learning new words or the alphabet.<br><br>Behavior: Avoidance of reading activities, frustration with language tasks, and confusion with similar-looking letters (like b and d).</p>
+                </div>
+                <div class="c1">
+                    <span class="image-container">
+                        <img src="../static/images/pic16.jpg" alt="School Age">
+                        <h5>2. School Age (Ages 9-12)</h5>
+                        <button onclick="toggleContent(this)">Click</button>
+                    </span>
+                    <p class="content">Signs: Ongoing struggles with reading fluency, comprehension, and spelling. Reading may become slow and labor-intensive.<br><br>Behavior: Increased anxiety about academic performance, lower self-esteem, and potential avoidance of reading aloud or participating in class discussions.</p>
+                </div>
+                <div class="c1">
+                    <span class="image-container">
+                        <img src="../static/images/pic3.jpg" alt="Adolescence to Adulthood">
+                        <h5>3. Adolescence to Adulthood (Ages 13+)</h5>
+                        <button onclick="toggleContent(this)">Click</button>
+                    </span>
+                    <p class="content">Signs: Continued difficulties with complex texts and writing tasks. Individuals may rely on compensatory strategies like audio books and assistive technology.<br><br>Behavior: May choose careers or educational paths that minimize reading requirements, seek accommodations in work or school, and develop effective coping strategies to manage challenges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <form class="login-card" id="loginForm" action="/login" method="post">
+            <button type="button" class="cancel-btn" id="cancelBtn">✖</button>
+            <h1>LOG IN</h1>
+            <input type="text" placeholder="Username" id="username" name="username" required />
+            <input type="password" placeholder="Password" id="password" name="password" required />
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+    </div>
+
+<script src="../static/about.js"></script>
+</body>
+</html>

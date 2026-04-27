@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-position: center;
+            overflow: hidden; /* Prevents scrollbar if image overflows */
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent navbar */
+            padding: 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding-left: 50%;
+            display: flex;
+            align-items: center;
+        }
+        .navbar li a {
+            color: white;
+            padding-left: 6rem;
+            list-style-type: none;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .navbar li a:hover {
+            color: rgb(9, 240, 240);
+            transform: scale(1.2);
+            animation: dazzling 0.5s infinite;
+        }
+        @keyframes dazzling {
+            0%, 100% {
+                text-shadow: 0 0 5px rgb(102, 253, 228), 0 0 10px rgb(102, 253, 228), 0 0 15px rgb(102, 253, 228);
+            }
+            50% {
+                text-shadow: 0 0 20px rgb(102, 253, 228), 0 0 30px rgb(102, 253, 228), 0 0 40px rgb(102, 253, 228);
+            }
+        }
+        .navbar input[type="text"] {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .navbar li a {
+                padding-left: 2rem;
+            }
+            .container {
+                display: block;
+            }
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center; /* Center the images horizontally */
+            align-items: center; /* Center the images vertically */
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
+            position: relative; /* Allow absolute positioning of overlay */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .overlay-container {
+            position: relative; /* Position for absolute overlay */
+            width: 100%; /* Full width of its parent */
+            height: 100%; /* Full height of its parent */
+        }
+
+        .overlay-container img {
+            width: 100%; /* Make image responsive */
+            height: 100%; /* Make image cover full height */
+            object-fit: cover; /* Cover the container while maintaining aspect ratio */
+            border-radius: 10px; /* Rounded corners for the image */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+        }
+
+        .overlay-text {
+            position: absolute; /* Position overlay text */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Center text using transform */
+            color: white; /* Text color */
+            text-align: center; /* Center text alignment */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            padding: 20px; /* Padding around text */
+            border-radius: 10px; /* Rounded corners for text box */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for text box */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/input">Input</a></li>
+            <li><a href="#">Charts</a></li>
+            <li><a href="#">Performance</a></li>
+        </ul>
+    </nav>
+    <div class="image-container">
+        {% if data == 1 %}
+            <div class="overlay-container">
+                <img src="{{ url_for('static', filename='images/pic5.jpg') }}" alt="Dyslexia Present">
+                <div class="overlay-text">
+                    <h2>Dyslexia Present</h2>
+                    <p>You have been diagnosed with dyslexia. It is important to consult with your healthcare provider for strategies and support.</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="overlay-container">
+                <img src="{{ url_for('static', filename='images/pic7.jpg') }}" alt="Dyslexia Not Present">
+                <div class="overlay-text">
+                    <h2>Dyslexia Not Present</h2>
+                    <p>You have been diagnosed with no signs of dyslexia. However, if you have any concerns, please follow up with your healthcare provider.</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

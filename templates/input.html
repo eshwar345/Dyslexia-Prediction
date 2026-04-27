@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('../static/images/pic11.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding-left: 50%;
+            display: flex;
+            align-items: center;
+        }
+        .navbar li {
+            position: relative; /* Required for dropdown positioning */
+        }
+        .navbar li a {
+            color: white;
+            padding-left: 6rem;
+            list-style-type: none;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .navbar li a:hover {
+            color: rgb(9, 240, 240);
+            transform: scale(1.2);
+            animation: dazzling 0.5s infinite;
+        }
+        @keyframes dazzling {
+            0%, 100% {
+                text-shadow: 0 0 5px rgb(102, 253, 228), 0 0 10px rgb(102, 253, 228), 0 0 15px rgb(102, 253, 228);
+            }
+            50% {
+                text-shadow: 0 0 20px rgb(102, 253, 228), 0 0 30px rgb(102, 253, 228), 0 0 40px rgb(102, 253, 228);
+            }
+        }
+        .navbar input[type="text"] {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: absolute; /* Position it below the dropdown */
+            background-color: rgba(0, 0, 0, 0.8);
+            min-width: 160px; /* Set a minimum width */
+            z-index: 1;
+        }
+        .dropdown a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown a:hover {
+            background-color: rgb(9, 240, 240);
+        }
+        .navbar li:hover .dropdown {
+            display: block; /* Show dropdown on hover */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10rem;
+        }
+        .card {
+            width: 500px;
+            margin: 15px;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .card:hover {
+            box-shadow: 0 4px 8px white;
+        }
+        .info-card {
+            background-color: white;
+        }
+        .info-card h2 {
+            color: rgb(26, 129, 72);
+        }
+        .input-card {
+            background-color: rgba(24, 24, 24, 0.8);
+            color: white;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 20px;
+            margin: 10px;
+            border: none;
+            border-bottom: 0.5px solid rgb(9, 240, 240);
+            border-radius: 0px;
+            background-color: transparent;
+            color: white;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+        input[type="text"]::placeholder {
+            color: white;
+            opacity: 1;
+            font-size: 1rem;
+            font-weight: lighter;
+        }
+        input[type="text"]:focus {
+            border: 1px solid rgb(9, 240, 240);
+            box-shadow: 5px 5px 10px rgb(9, 240, 240);
+        }
+        button {
+            padding: 20px;
+            background-color: rgb(71, 234, 255);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+        button:hover {
+            background-color: rgb(3, 51, 51);
+            color: white;
+        }
+        @media screen and (max-width: 600px) {
+            .navbar li a {
+                padding-left: 2rem;
+            }
+            .container {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="/input">Input</a>
+                <div class="dropdown">
+                    <a href="/input" class="active">Manual</a>
+                    <a href="/input_excel">Excel</a>
+                </div>
+            </li>
+            <li><a href="/charts">Charts</a></li>
+            <li><a href="/performance">Performance</a></li>
+            
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="card info-card">
+            <h2>Input Information</h2>
+            <p>This section provides information about the inputs you will be entering manually in the form.</p>
+        </div>
+        <div class="card input-card">
+            <h2>Input Fields</h2>
+            <form id="inputForm" action="/result" method="post">
+                <input type="text" placeholder="Gender  'Male': 1, 'Female': 2" name="gender" required>
+                <input type="text" placeholder="Native Language  'No': 0, 'Yes': 1" name="native" required>
+                <input type="text" placeholder="Other language  'No': 0, 'Yes': 1" name="other" required>
+                <input type="text" placeholder="Age" name="age" required>
+                
+                <div id="dynamicInputs"></div> <!-- Dynamic input fields will be added here -->
+                
+                <button type="button" id="addButton" onclick="addInputFields()">Add Input Fields</button> <!-- Button to add more input sets -->
+                <button type="submit" id="submitButton" style="display:none;">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let inputSetCount = 0; // Count of dynamic input sets
+
+        // Function to add input fields for Clicks, Hits, Misses, Score, Accuracy, Miss Rate
+        function addInputFields() {
+            if (inputSetCount < 32) { // Limit to 32 sets
+                const container = document.getElementById('dynamicInputs');
+                const fieldSet = document.createElement('div');
+                fieldSet.innerHTML = `
+                    <h3>Set ${inputSetCount + 1}</h3>
+                    <input type="text" placeholder="Clicks" name="clicks${inputSetCount + 1}" required>
+                    <input type="text" placeholder="Hits" name="hits${inputSetCount + 1}" required>
+                    <input type="text" placeholder="Misses" name="misses${inputSetCount + 1}" required>
+                    <input type="text" placeholder="Score" name="score${inputSetCount + 1}" required>
+                    <input type="text" placeholder="Accuracy" name="accuracy${inputSetCount + 1}" required>
+                    <input type="text" placeholder="Miss Rate" name="missrate${inputSetCount + 1}" required>
+                `;
+                container.appendChild(fieldSet);
+                inputSetCount++; // Increment the count
+
+                // Show submit button if limit is reached
+                if (inputSetCount === 32) {
+                    document.getElementById('addButton').style.display = 'none'; // Hide the add button
+                    document.getElementById('submitButton').style.display = 'block'; // Show the submit button
+                }
+            }
+        }
+    </script>
+</body>
+</html>

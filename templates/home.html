@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyslexia Disease</title>
+    <link rel="stylesheet" href="../static/home.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-text" id="loadingText"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="content" id="pageContent">
+        <div class="nav">
+            <span class="heading">
+                <h2 style="font-size: 38px;">Dyslexia Disease</h2>
+            </span>
+            <span class="pages">
+                <ul style="display: flex; gap: 40px;"> 
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="#" id="loginLink">LogIn</a></li>
+                </ul>
+            </span>
+        </div>
+        <div class="main">
+            <div class="sec1">
+                <h2>Explore To Know More <br>About Dyslexia</h2>
+                <button id="exploreBtn">Explore</button>
+            </div>
+            <div class="sec2">
+                <p>"Living with dyslexia means thinking outside the box, where every challenge is an opportunity. Believe in your strengths and let them lead the way."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <form class="login-card" id="loginForm" action="/login" method="post">
+            <button type="button" class="cancel-btn" id="cancelBtn">✖</button>
+            <h1>LOG IN</h1>
+            <input type="text" placeholder="Username" id="username" name="username" required />
+            <input type="password" placeholder="Password" id="password" name="password" required />
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+    </div>
+
+<script src="../static/script.js"></script>
+</body>
+</html>

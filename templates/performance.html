@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyslexia Disease</title>
+    <link rel="stylesheet" href="../static/about.css">
+</head>
+<body>
+    
+    <div >
+        <div class="nav" >
+            <span class="heading">
+                <h2 style="font-size: 38px;">Dyslexia Disease</h2>
+            </span>
+            <span class="pages">
+                <ul style="display: flex; gap: 40px;"> 
+                    <li><a href="/input">Prediction</a></li>
+                    <li><a href="/charts">Charts</a></li>
+            <li><a href="/performance" class="active">Performance</a></li>
+            <li><a href="/logout">Logout</a></li>
+                </ul>
+            </span>
+        </div>
+        <br><br><br>
+        <div class="sec">
+            <h1 class="animated-title">Model Performance Metrics</h1>
+            <br><br><br>    <br><br><br>
+            <div class="sec1">
+                <div class="c1">
+                    <span class="image-container">
+                        
+                        <h5>Accuracy</h5>
+                        <br><br>
+                        <button onclick="toggleContent(this)">Click</button>
+                    </span>
+                    <p class="content">Accuracy: 91.9%</p>
+                </div>
+                <div class="c1">
+                    <span class="image-container">
+                        
+                        <h5>Precision</h5>
+                        <br><br>
+                        <button onclick="toggleContent(this)">Click</button>
+                    </span>
+                    <p class="content">Precision: 98.18%</p>
+                </div>
+                <div class="c1">
+                    <span class="image-container">
+                    
+                        <h5>Recall</h5><br><br>
+                        <button onclick="toggleContent(this)">Click</button>
+                    </span>
+                    <p class="content">Recall: 99.90%</p>
+                </div>
+                <div class="c1">
+                    <span class="image-container">
+                        <!-- <img src="../static/images/f1score.jpg" alt="F1 Score"> -->
+                        <h5>F1 Score</h5><br><br>
+                        <button onclick="toggleContent(this)">Click</button>
+                    </span>
+                    <p class="content">F1 Score: 95.5%</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="overlay" id="overlay">
+        <form class="login-card" id="loginForm" action="/login" method="post">
+            <button type="button" class="cancel-btn" id="cancelBtn">✖</button>
+            <h1>LOG IN</h1>
+            <input type="text" placeholder="Username" id="username" name="username" required />
+            <input type="password" placeholder="Password" id="password" name="password" required />
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+    </div>
+
+<script src="../static/about.js"></script>
+</body>
+</html>
