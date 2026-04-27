@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../static/images/pic14.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    background-color: rgba(111, 78, 55, 0.8); /* Coffee bean color with transparency */
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar li {
+    color: white;
+}
+
+.navbar input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px; /* Space for the navbar */
+}
+
+.card {
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-card {
+    background-color: white;
+}
+
+.input-card {
+    background-color: rgba(111, 78, 55, 0.8); /* Coffee bean color with transparency */
+    color: white;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: rgba(111, 78, 55, 0.9); /* Darker coffee bean color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: rgba(111, 78, 55, 1);
+}
